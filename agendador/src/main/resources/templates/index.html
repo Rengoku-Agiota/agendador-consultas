@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Vida & Saúde - Agendamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        header { text-align: center; border-bottom: 2px solid #2a9d8f; padding-bottom: 15px; margin-bottom: 20px; }
+        h1 { color: #2a9d8f; margin: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #2a9d8f; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #218376; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Clínica Vida & Saúde</h1>
+            <p>Agendamento de Consultas Online</p>
+        </header>
+
+        <form th:action="@{/agendar}" th:object="${paciente}" method="post">
+            <div class="form-group">
+                <label>Nome Completo:</label>
+                <input type="text" th:field="*{nome}" required placeholder="Digite seu nome">
+            </div>
+
+            <div class="form-group">
+                <label>Telefone (WhatsApp):</label>
+                <input type="tel" th:field="*{telefone}" required placeholder="(11) 99999-9999">
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de Atendimento:</label>
+                <select th:field="*{tipoAtendimento}">
+                    <option value="Convênio Médico">Convênio Médico</option>
+                    <option value="Particular">Particular</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Especialidade:</label>
+                <select th:field="*{especialidade}">
+                    <option value="Ortopedia">Ortopedia</option>
+                    <option value="Dentista">Dentista</option>
+                    <option value="Ginecologia">Ginecologia</option>
+                    <option value="Exames">Exames</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Médico(a):</label>
+                <select th:field="*{medico}">
+                    <option value="Dr. Carlos Silva (Ortopedia)">Dr. Carlos Silva</option>
+                    <option value="Dra. Amanda Costa (Ortopedia)">Dra. Amanda Costa</option>
+                    <option value="Dr. Roberto Lima (Dentista)">Dr. Roberto Lima</option>
+                    <option value="Dra. Patricia Souza (Ginecologia)">Dra. Patricia Souza</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Data e Horário:</label>
+                <select th:field="*{dataHora}">
+                    <option value="15/10/2026 às 09:00">15/10/2026 às 09:00</option>
+                    <option value="15/10/2026 às 14:30">15/10/2026 às 14:30</option>
+                    <option value="16/10/2026 às 10:00">16/10/2026 às 10:00</option>
+                </select>
+            </div>
+
+            <button type="submit">Finalizar Agendamento</button>
+        </form>
+    </div>
+</body>
+</html>

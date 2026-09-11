@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprovante de Agendamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .card { max-width: 500px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 8px; border-top: 5px solid #2a9d8f; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .validador { background: #e8f5e9; color: #2e7d32; padding: 10px; font-weight: bold; font-size: 18px; text-align: center; border-radius: 4px; margin: 15px 0; }
+        .info { line-height: 1.6; }
+        a { display: block; text-align: center; margin-top: 20px; color: #2a9d8f; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Consulta Agendada com Sucesso!</h2>
+        <p>Um comprovante foi enviado para o número: <strong th:text="${paciente.telefone}"></strong></p>
+
+        <div class="validador">
+            Código Validador: <span th:text="${codigoValidador}"></span>
+        </div>
+
+        <div class="info">
+            <p><strong>Paciente:</strong> <span th:text="${paciente.nome}"></span></p>
+            <p><strong>Tipo:</strong> <span th:text="${paciente.tipoAtendimento}"></span></p>
+            <p><strong>Especialidade:</strong> <span th:text="${paciente.especialidade}"></span></p>
+            <p><strong>Médico:</strong> <span th:text="${paciente.medico}"></span></p>
+            <p><strong>Data/Hora:</strong> <span th:text="${paciente.dataHora}"></span></p>
+        </div>
+
+        <a href="/">Fazer Novo Agendamento</a>
+    </div>
+</body>
+</html>
